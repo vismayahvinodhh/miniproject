@@ -1,5 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'Admin_notificatn.dart';
 
 class Add_notification extends StatefulWidget {
   const Add_notification({super.key});
@@ -9,6 +12,18 @@ class Add_notification extends StatefulWidget {
 }
 
 class _Add_notificationState extends State<Add_notification> {
+  Future<void>Notication_add()async{
+    FirebaseFirestore.instance.collection("Admincollection").add({
+      "Matter":Matter_ctrl.text,
+      "Content":Content_ctrl.text,
+    });
+    print("Added Successfully");
+    Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return AdminNotificationpage();
+    },));
+  }
+  var Matter_ctrl = TextEditingController();
+  var Content_ctrl = TextEditingController();
   final formkey = GlobalKey<FormState>(); //for validations
   @override
   Widget build(BuildContext context) {
@@ -42,7 +57,7 @@ class _Add_notificationState extends State<Add_notification> {
                       ],
                     ),
                     SizedBox(height: 10,),
-                    TextFormField(
+                    TextFormField(controller: Matter_ctrl,
                       decoration: InputDecoration(
                           hintText: ("Matter"),
                           border: OutlineInputBorder(
@@ -72,6 +87,7 @@ class _Add_notificationState extends State<Add_notification> {
                     SizedBox(
                       height: 400,
                       child: TextField(
+                        controller:Content_ctrl ,
                         maxLines: 20, //or null
                         decoration: InputDecoration.collapsed(
                             hintText: "  content",
@@ -88,17 +104,21 @@ class _Add_notificationState extends State<Add_notification> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
-                    height: 60,
-                    width: 250,
-                    decoration: BoxDecoration(
-                        color: Colors.blue.shade900,
-                        borderRadius: BorderRadius.circular(20)),
-                    child: Center(
-                        child: Text("Submit",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w900, fontSize: 20))),
+                  InkWell(onTap: () {
+                    Notication_add();
+                  } ,
+                    child: Container(
+                      height: 60,
+                      width: 250,
+                      decoration: BoxDecoration(
+                          color: Colors.blue.shade900,
+                          borderRadius: BorderRadius.circular(20)),
+                      child: Center(
+                          child: Text("Submit",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w900, fontSize: 20))),
+                    ),
                   )
                 ],
               )

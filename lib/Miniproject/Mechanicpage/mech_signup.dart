@@ -1,5 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../Adminpage/Admin_homeuser.dart';
 
 
 class MechSignUp extends StatefulWidget {
@@ -10,6 +13,37 @@ class MechSignUp extends StatefulWidget {
 }
 
 class _MechSignUpState extends State<MechSignUp> {
+  Future<void>Mech_signup()async{
+    FirebaseFirestore.instance.collection("MechCollection").add({
+      "Username":Username_ctrl.text,
+      "Phone Number":phonenumber_ctrl.text,
+      "Email":Email_ctrl.text,
+      "Work Experience":Experience_ctrl.text,
+      "Workshop name":Workshop_ctrl.text,
+      "Password":Password_ctrl.text,
+      "Location":Location_ctrl.text,
+
+
+
+
+    });
+    print("Added Successfully");
+    Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return Mechanicbar();
+    },));
+  }
+  var Username_ctrl = TextEditingController();
+  var phonenumber_ctrl = TextEditingController();
+  var Email_ctrl = TextEditingController();
+  var Experience_ctrl =TextEditingController();
+  var Workshop_ctrl =TextEditingController();
+  var Password_ctrl =TextEditingController();
+  var Location_ctrl =TextEditingController();
+
+
+
+  final formkey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -60,6 +94,7 @@ class _MechSignUpState extends State<MechSignUp> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 40.w),
                 child: TextFormField(
+                  controller: Username_ctrl,
                   decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
@@ -94,6 +129,7 @@ class _MechSignUpState extends State<MechSignUp> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 40.w),
                 child: TextFormField(
+                  controller: phonenumber_ctrl,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
@@ -124,6 +160,7 @@ class _MechSignUpState extends State<MechSignUp> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 40.w),
                 child: TextFormField(
+                  controller: Email_ctrl,
                   decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
@@ -155,6 +192,7 @@ class _MechSignUpState extends State<MechSignUp> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 40.w),
                 child: TextFormField(
+                  controller: Experience_ctrl,
                   decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
@@ -186,6 +224,7 @@ class _MechSignUpState extends State<MechSignUp> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 40.w),
                 child: TextFormField(
+                  controller: Workshop_ctrl,
                   decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
@@ -217,6 +256,7 @@ class _MechSignUpState extends State<MechSignUp> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 40.w),
                 child: TextFormField(
+                  controller: Password_ctrl,
                   decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
@@ -228,22 +268,57 @@ class _MechSignUpState extends State<MechSignUp> {
                      TextStyle(fontWeight: FontWeight.w300)),
                 ),
               ),
+              Padding(
+                padding: EdgeInsets.only(left: 40.w),
+                child: Row(
+                  children: [
+                    Text(
+                      'Enter Location',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 15.sp),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 5.h,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 40.w),
+                child: TextFormField(
+                  controller: Location_ctrl,
+                  decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white),
+                          borderRadius: BorderRadius.circular(10.r)),
+                      filled: true,
+                      fillColor: Colors.white,
+                      hintText: 'Enter your location ',
+                      hintStyle:
+                      TextStyle(fontWeight: FontWeight.w300)),
+                ),
+              ),
               SizedBox(
                 height: 15.h,
               ),
-              Container(
-                width: 190.w,
-                height: 40.h,
-                decoration: BoxDecoration(
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.circular(10.r)),
-                child: Center(
-                  child: Text(
-                    'SIGN UP',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15.sp),
+              InkWell(
+                onTap: () {
+                  Mech_signup();
+                },
+                child: Container(
+                  width: 190.w,
+                  height: 40.h,
+                  decoration: BoxDecoration(
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.circular(10.r)),
+                  child: Center(
+                    child: Text(
+                      'SIGN UP',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15.sp),
+                    ),
                   ),
                 ),
               ),

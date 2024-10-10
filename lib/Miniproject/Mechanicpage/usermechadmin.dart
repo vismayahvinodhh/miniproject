@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'Adminpage/adminpage2.dart';
-import 'Userpage/user_loginpage.dart';
+import '../Adminpage/Admin_login.dart';
+import '../Userpage/user_loginpage.dart';
 import 'mech_login.dart';
 
 class Home extends StatefulWidget {

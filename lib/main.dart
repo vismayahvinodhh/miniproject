@@ -2,8 +2,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'Miniproject/Adminpage/Admin_notificatn.dart';
 import 'Miniproject/Adminpage/Navigatnpageadmin.dart';
-import 'Miniproject/Userandmechanic.dart';
+import 'Miniproject/Adminpage/admin_addnotificatn.dart';
+import 'Miniproject/Mechanicpage/Userandmechanic.dart';
 import 'Miniproject/Userpage/user_profile.dart';
 import 'Miniproject/Userpage/user_rating.dart';
 import 'Miniproject/Userpage/user_signup.dart';
@@ -13,20 +15,20 @@ import 'Miniproject/Userpage/user_mechanidetail.dart';
 import 'Miniproject/Userpage/user_mechanicbill.dart';
 import 'Miniproject/Userpage/user_loginpage.dart';
 import 'Miniproject/Userpage/user_mechaniclist.dart';
-import 'Miniproject/mech_profilee.dart';
-import 'Miniproject/mech_login.dart';
-import 'Miniproject/mech_navigation.dart';
-import 'Miniproject/mech_notificatn.dart';
-import 'Miniproject/mech_editprofile.dart';
-import 'Miniproject/mech_rating.dart';
-import 'Miniproject/mech_servicehome.dart';
-import 'Miniproject/mech_req2.dart';
-import 'Miniproject/mech_service.dart';
-import 'Miniproject/mech_serviceaccepted.dart';
-import 'Miniproject/mech_signup.dart';
-import 'Miniproject/mech_splash.dart';
-import 'Miniproject/mechreq1.dart';
-import 'Miniproject/usermechadmin.dart';
+import 'Miniproject/Mechanicpage/mech_profilee.dart';
+import 'Miniproject/Mechanicpage/mech_login.dart';
+import 'Miniproject/Mechanicpage/mech_navigation.dart';
+import 'Miniproject/Mechanicpage/mech_notificatn.dart';
+import 'Miniproject/Mechanicpage/mech_editprofile.dart';
+import 'Miniproject/Mechanicpage/mech_rating.dart';
+import 'Miniproject/Mechanicpage/mech_servicehome.dart';
+import 'Miniproject/Mechanicpage/mech_req2.dart';
+import 'Miniproject/Mechanicpage/mech_service.dart';
+import 'Miniproject/Mechanicpage/mech_serviceaccepted.dart';
+import 'Miniproject/Mechanicpage/mech_signup.dart';
+import 'Miniproject/Mechanicpage/mech_splash.dart';
+import 'Miniproject/Mechanicpage/mechreq1.dart';
+import 'Miniproject/Mechanicpage/usermechadmin.dart';
 import 'firebase_options.dart';
 
 
@@ -53,7 +55,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:Home(),
+      home:MechSignUp(),
     ));
   }
 }
