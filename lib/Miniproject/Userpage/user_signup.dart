@@ -16,6 +16,7 @@ class User_signup extends StatefulWidget {
 class _User_signupState extends State<User_signup> {
   Future<void>Signup_add()async{
     FirebaseFirestore.instance.collection("UserCollection").add({
+      "Profile":"https://qph.cf2.quoracdn.net/main-qimg-34f51f055713ba60524f1b871b168d96",
       "Username":Username_ctrl.text,
       "Phone Number":Phonenumber_ctrl.text,
       "Email":Email_ctrl.text,
@@ -25,7 +26,7 @@ class _User_signupState extends State<User_signup> {
     });
     print("Added Successfully");
     Navigator.push(context, MaterialPageRoute(builder: (context) {
-      return Mechanicbar();
+      return User_login();
     },));
   }
   var Username_ctrl  = TextEditingController();

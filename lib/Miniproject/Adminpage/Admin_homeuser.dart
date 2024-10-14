@@ -108,7 +108,7 @@ class User extends StatelessWidget {
                             width: 100,
                             decoration: BoxDecoration(
                                 image: DecorationImage(
-                                    image: AssetImage("assets/businessman.png"),fit: BoxFit.cover
+                                    image: NetworkImage("${uuser_signup["Profile"] ?? ""}"),fit: BoxFit.cover
                                 )),
                           ),
                           Column(
@@ -116,7 +116,7 @@ class User extends StatelessWidget {
                               Padding(
                                 padding: const EdgeInsets.only(right: 82),
                                 child: Text(
-                                  "Name:${uuser_signup["Username"] ?? ""}",
+                                  "Username:${uuser_signup["Username"] ?? ""}",
                                   style: TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,
@@ -197,7 +197,7 @@ class Mechanic extends StatelessWidget {
                             width: 100,
                             decoration: BoxDecoration(
                                 image: DecorationImage(
-                                  image: AssetImage("assets/businessman.png"),
+                                  image: NetworkImage("${Mech_view["Profile"] ?? ""}"),
                                 )),
                           ),
                           Column(

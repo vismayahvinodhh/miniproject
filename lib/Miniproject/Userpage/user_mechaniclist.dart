@@ -51,7 +51,7 @@ class _User_mechanic_listState extends State<User_mechanic_list> {
                 ),
               ),
               SizedBox(
-                width: 10.w,
+                width: 5.w,
               ),
               IconButton(
                   onPressed: () {

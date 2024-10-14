@@ -1,5 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:miniproject/Miniproject/Mechanicpage/usermechadmin.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'mech_navigation.dart';
 import 'mech_signup.dart';
@@ -10,8 +13,44 @@ class MechLogin extends StatefulWidget {
   @override
   State<MechLogin> createState() => _MechLoginState();
 }
-
+String id ="";
 class _MechLoginState extends State<MechLogin> {
+  void mechLogin() async {
+    final user = await FirebaseFirestore.instance
+        .collection('MechCollection')
+        .where('Username', isEqualTo: Username_ctrl.text)
+        .where('Password', isEqualTo: Password_ctrl.text)
+
+        .get();
+    if (user.docs.isNotEmpty) {
+      id = user.docs[0].id;
+
+
+      SharedPreferences data = await SharedPreferences.getInstance();
+      data.setString('id', id);
+
+      Navigator.push(context, MaterialPageRoute(
+        builder: (context) {
+          return Home();
+        },
+      ));
+    }
+    else {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text(
+            "username and password error",
+            style: TextStyle(color: Colors.red),
+          )));
+    }
+
+
+  }
+  var Username_ctrl = TextEditingController();
+  var Password_ctrl =TextEditingController();
+  Future<void>Mechhlogin()async{
+
+  }
+  final formkey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -54,13 +93,16 @@ class _MechLoginState extends State<MechLogin> {
                   ),
                 ],
               ),
+
             ),
+
+
             SizedBox(
               height: 10.h,
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10.w),
-              child: TextFormField(
+              child: TextFormField( controller: Username_ctrl,
                 decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.white),
@@ -94,7 +136,7 @@ class _MechLoginState extends State<MechLogin> {
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10.w),
-              child: TextFormField(
+              child: TextFormField( controller: Password_ctrl,
                 decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.white),
@@ -117,11 +159,7 @@ class _MechLoginState extends State<MechLogin> {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.push(context, MaterialPageRoute(
-                  builder: (context) {
-                    return BottomNav();
-                  },
-                ));
+                Mechhlogin();
               },
               child: Container(
                 width: 200.w,

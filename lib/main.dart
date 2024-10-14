@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'Miniproject/Adminpage/Admin_homeuser.dart';
 import 'Miniproject/Adminpage/Admin_notificatn.dart';
 import 'Miniproject/Adminpage/Navigatnpageadmin.dart';
 import 'Miniproject/Adminpage/admin_addnotificatn.dart';
@@ -55,7 +56,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:MechSignUp(),
+      home:Home(),
     ));
   }
 }

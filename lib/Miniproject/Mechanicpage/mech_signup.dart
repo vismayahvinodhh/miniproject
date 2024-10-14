@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../Adminpage/Admin_homeuser.dart';
+import 'mech_login.dart';
 
 
 class MechSignUp extends StatefulWidget {
@@ -15,6 +16,7 @@ class MechSignUp extends StatefulWidget {
 class _MechSignUpState extends State<MechSignUp> {
   Future<void>Mech_signup()async{
     FirebaseFirestore.instance.collection("MechCollection").add({
+      "Profile":"https://qph.cf2.quoracdn.net/main-qimg-34f51f055713ba60524f1b871b168d96",
       "Username":Username_ctrl.text,
       "Phone Number":phonenumber_ctrl.text,
       "Email":Email_ctrl.text,
@@ -29,7 +31,7 @@ class _MechSignUpState extends State<MechSignUp> {
     });
     print("Added Successfully");
     Navigator.push(context, MaterialPageRoute(builder: (context) {
-      return Mechanicbar();
+      return MechLogin();
     },));
   }
   var Username_ctrl = TextEditingController();
