@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "418940085189",
+    "project_id": "vehicleminiproject",
+    "storage_bucket": "vehicleminiproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:418940085189:android:348c8b6427012cb4f161ac",
+        "android_client_info": {
+          "package_name": "com.example.miniproject"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6glVLEb7AuMsRQ_Zuv9k-ILbckZB80VU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
