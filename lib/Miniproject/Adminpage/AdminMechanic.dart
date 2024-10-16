@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Vehicle7 extends StatefulWidget {
-  const Vehicle7({super.key});
+class Admin_Mechanic extends StatefulWidget {
+  const Admin_Mechanic({super.key});
 
   @override
-  State<Vehicle7> createState() => _Vehicle7State();
+  State<Admin_Mechanic> createState() => _Admin_MechanicState();
 }
 
-class _Vehicle7State extends State<Vehicle7> {
+class _Admin_MechanicState extends State<Admin_Mechanic> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,7 +72,7 @@ class _Vehicle7State extends State<Vehicle7> {
                         Row(
                           children: [
                             Text(
-                              'Mech Username',
+                              ' Username',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 15),
                             ),

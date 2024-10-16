@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 
-import 'admin9.dart';
+import 'AdminMechanic.dart';
 
 class User_And_Mechanic extends StatelessWidget {
   @override
@@ -133,7 +133,7 @@ class Mechanic extends StatelessWidget {
             padding: const EdgeInsets.only(left: 15, right: 15, top: 15),
             child: InkWell(onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return Vehicle7();
+                return Admin_Mechanic();
               },));
             },
               child: Card(

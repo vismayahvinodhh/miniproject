@@ -1,6 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class User_profile extends StatefulWidget {
   const User_profile({super.key});
@@ -10,6 +12,28 @@ class User_profile extends StatefulWidget {
 }
 
 class _User_profileState extends State<User_profile> {
+
+  @override
+  void initState(){
+    super.initState();
+    Get_data_sp();
+  }
+  var id;
+  Future<void> Get_data_sp()async{
+    SharedPreferences data = await SharedPreferences.getInstance();
+    setState(() {
+      id = data.getString("id");
+      print("Get Successful!");
+      print(id);
+    });
+    }
+  Future<void> Getbyid() async {
+    Profile = await FirebaseFirestore.instance
+        .collection("UserCollection")
+        .doc(id)
+        .get();
+  }
+  DocumentSnapshot? Profile;
   @override
   Widget build(BuildContext context) {
     return Scaffold(

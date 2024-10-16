@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:miniproject/Miniproject/Userpage/user_mechanicbill.dart';
 import 'package:miniproject/Miniproject/Userpage/user_mechanidetail.dart';
 import 'package:miniproject/Miniproject/Userpage/user_notification.dart';
+import 'package:miniproject/Miniproject/Userpage/user_profile.dart';
 
 
 class User_mechanic_list extends StatefulWidget {
@@ -26,8 +27,15 @@ class _User_mechanic_listState extends State<User_mechanic_list> {
           toolbarHeight: 90.h,
           title: Row(
             children: [
-              CircleAvatar(
-                backgroundImage: AssetImage("assets/Profile.png"),
+              InkWell(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return User_profile();
+                  },));
+                },
+                child: CircleAvatar(
+                  backgroundImage: AssetImage("assets/Profile.png"),
+                ),
               ),
               SizedBox(
                 width: 20.w,

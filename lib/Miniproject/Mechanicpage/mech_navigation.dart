@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'mech_rating.dart';
@@ -30,22 +31,26 @@ class _BottomNavState extends State<BottomNav> {
             selectedLabelStyle: TextStyle(color: Colors.black),
             items: [
               BottomNavigationBarItem(
-                  icon: ImageIcon(
-
-                    AssetImage('assets/plumber.jpg'),
+                  icon: Icon(
+                    Icons.person,
+                    size: 30,
                   ),
-                  label: 'Request'),
+                  label: 'Request',
+                  backgroundColor: Colors.white),
               BottomNavigationBarItem(
-                  icon: ImageIcon(
-                    color: Colors.black,
-                    AssetImage('assets/settings.jpg'),
+                  icon: Icon(
+                    CupertinoIcons.settings,
+                    size: 30,
                   ),
-                  label: 'Service'),
+                  label: 'Service',
+                  backgroundColor: Colors.white),
               BottomNavigationBarItem(
-                  icon: ImageIcon(
-
-                      AssetImage('assets/star.jpg')),
-                  label: 'Rating'),
+                  icon: Icon(
+                    Icons.star,
+                    size: 30,
+                  ),
+                  label: 'Rating',
+                  backgroundColor: Colors.white),
             ]),
       ),
     );

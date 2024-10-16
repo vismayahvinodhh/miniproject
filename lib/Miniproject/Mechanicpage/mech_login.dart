@@ -13,49 +13,44 @@ class MechLogin extends StatefulWidget {
   @override
   State<MechLogin> createState() => _MechLoginState();
 }
-String id ="";
+
+String id = "";
+
 class _MechLoginState extends State<MechLogin> {
   void mechLogin() async {
     final user = await FirebaseFirestore.instance
         .collection('MechCollection')
         .where('Username', isEqualTo: Username_ctrl.text)
         .where('Password', isEqualTo: Password_ctrl.text)
-
         .get();
     if (user.docs.isNotEmpty) {
       id = user.docs[0].id;
-
 
       SharedPreferences data = await SharedPreferences.getInstance();
       data.setString('id', id);
 
       Navigator.push(context, MaterialPageRoute(
         builder: (context) {
-          return Home();
+          return BottomNav();
         },
       ));
-    }
-    else {
+    } else {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           content: Text(
-            "username and password error",
-            style: TextStyle(color: Colors.red),
-          )));
+        "Username and Password error",
+        style: TextStyle(color: Colors.red),
+      )));
     }
-
-
   }
+
   var Username_ctrl = TextEditingController();
-  var Password_ctrl =TextEditingController();
-  Future<void>Mechhlogin()async{
+  var Password_ctrl = TextEditingController();
 
-  }
-  final formkey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor:Colors.blue.shade100,
+        backgroundColor: Colors.blue.shade100,
         body: Column(
           children: [
             SizedBox(
@@ -79,8 +74,7 @@ class _MechLoginState extends State<MechLogin> {
             ),
             Text(
               'LOGIN',
-              style:TextStyle(
-                  fontWeight: FontWeight.bold, fontSize: 25.sp),
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25.sp),
             ),
             Padding(
               padding: EdgeInsets.only(left: 30.w, top: 20.h),
@@ -88,21 +82,19 @@ class _MechLoginState extends State<MechLogin> {
                 children: [
                   Text(
                     'Enter username',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 15.sp),
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 15.sp),
                   ),
                 ],
               ),
-
             ),
-
-
             SizedBox(
               height: 10.h,
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10.w),
-              child: TextFormField( controller: Username_ctrl,
+              child: TextFormField(
+                controller: Username_ctrl,
                 decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.white),
@@ -125,8 +117,8 @@ class _MechLoginState extends State<MechLogin> {
                 children: [
                   Text(
                     'Enter Password',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 15.sp),
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 15.sp),
                   ),
                 ],
               ),
@@ -136,7 +128,8 @@ class _MechLoginState extends State<MechLogin> {
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10.w),
-              child: TextFormField( controller: Password_ctrl,
+              child: TextFormField(
+                controller: Password_ctrl,
                 decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.white),
@@ -144,7 +137,7 @@ class _MechLoginState extends State<MechLogin> {
                     filled: true,
                     fillColor: Colors.white,
                     hintText: 'Your password',
-                    hintStyle:TextStyle(fontWeight: FontWeight.w300)),
+                    hintStyle: TextStyle(fontWeight: FontWeight.w300)),
               ),
             ),
             Padding(
@@ -157,9 +150,9 @@ class _MechLoginState extends State<MechLogin> {
             SizedBox(
               height: 10.h,
             ),
-            GestureDetector(
+            InkWell(
               onTap: () {
-                Mechhlogin();
+                mechLogin();
               },
               child: Container(
                 width: 200.w,
@@ -170,7 +163,7 @@ class _MechLoginState extends State<MechLogin> {
                 child: Center(
                   child: Text(
                     'LOGIN',
-                    style:TextStyle(
+                    style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
                         fontSize: 15.sp),
@@ -195,7 +188,7 @@ class _MechLoginState extends State<MechLogin> {
                     },
                     child: Text(
                       'Sign up',
-                      style:TextStyle(color: Colors.blue),
+                      style: TextStyle(color: Colors.blue),
                     ))
               ],
             ),

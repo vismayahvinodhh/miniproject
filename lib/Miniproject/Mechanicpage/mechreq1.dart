@@ -43,9 +43,9 @@ class _MechReq1State extends State<MechReq1> {
                             CircleAvatar(
                               radius: 30.r,
                               backgroundImage:
-                              AssetImage('assets/icons/boss.png'),
+                              AssetImage('assets/boss.png'),
                             ),
-                            Text('Name')
+                            Text('Name',style: TextStyle(color: Colors.black),)
                           ],
                         ),
                         Spacer(),

@@ -102,6 +102,7 @@ class _User_loginState extends State<User_login> {
                   Padding(
                     padding: const EdgeInsets.only(left: 10, right: 10),
                     child: TextFormField(
+                      controller: Username_ctrl,
                       decoration: InputDecoration(
                           hintText: 'Username',
                           focusColor: Colors.white,
@@ -137,6 +138,7 @@ class _User_loginState extends State<User_login> {
                   Padding(
                     padding: const EdgeInsets.only(left: 10, right: 10),
                     child: TextFormField(
+                      controller: Password_ctrl,
                       decoration: InputDecoration(
                           hintText: 'Enter Passsword',
                           focusColor: Colors.white,

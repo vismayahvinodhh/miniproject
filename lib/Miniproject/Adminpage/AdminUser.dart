@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 import 'Admin_homeuser.dart';
 
-class vechicle_6 extends StatefulWidget {
-  const vechicle_6({super.key});
+class Admin_user extends StatefulWidget {
+  const Admin_user({super.key});
 
   @override
-  State<vechicle_6> createState() => _vechicle_6State();
+  State<Admin_user> createState() => _Admin_userState();
 }
 
-class _vechicle_6State extends State<vechicle_6> {
+class _Admin_userState extends State<Admin_user> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

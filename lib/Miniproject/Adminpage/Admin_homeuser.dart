@@ -2,8 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'admin8.dart';
-import 'admin9.dart';
+import 'AdminUser.dart';
+import 'AdminMechanic.dart';
 
 
 class Mechanicbar extends StatelessWidget {
@@ -94,7 +94,7 @@ class User extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 15, right: 15, top: 15),
                 child: InkWell(onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return vechicle_6();
+                    return Admin_user();
                   },));
                 },
                   child: Card(
@@ -183,7 +183,7 @@ class Mechanic extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 15, right: 15, top: 15),
                 child: InkWell(onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return Vehicle7();
+                    return Admin_Mechanic();
                   },));
                 },
                   child: Card(

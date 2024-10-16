@@ -4,14 +4,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'mech_login.dart';
 
 
-class UOrM extends StatefulWidget {
-  const UOrM({super.key});
+class UserorMechanic extends StatefulWidget {
+  const UserorMechanic({super.key});
 
   @override
-  State<UOrM> createState() => _UOrMState();
+  State<UserorMechanic> createState() => _UserorMechanicState();
 }
 
-class _UOrMState extends State<UOrM> {
+class _UserorMechanicState extends State<UserorMechanic> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
