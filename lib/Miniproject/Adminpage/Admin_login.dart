@@ -44,7 +44,7 @@ class _AdminloginpageState extends State<Adminloginpage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "LOGIN",
+                    "ADMIN LOGIN",
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
                   )
                 ],

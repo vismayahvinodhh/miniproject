@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'mech_service.dart';
 
-
 class MechReq1 extends StatefulWidget {
   const MechReq1({super.key});
 
@@ -21,7 +20,11 @@ class _MechReq1State extends State<MechReq1> {
           padding: const EdgeInsets.symmetric(horizontal: 30),
           child: GestureDetector(
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => MechService(),));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MechService(),
+                  ));
             },
             child: Card(
               child: Container(
@@ -29,7 +32,7 @@ class _MechReq1State extends State<MechReq1> {
                 height: 100.h,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color:Colors.blue.shade100),
+                    color: Colors.blue.shade100),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -42,12 +45,14 @@ class _MechReq1State extends State<MechReq1> {
                           children: [
                             CircleAvatar(
                               radius: 30.r,
-                              backgroundImage:
-                              AssetImage('assets/boss.png'),
+                              backgroundImage: AssetImage('assets/boss.png'),
                             ),
-                            Text('Name',style: TextStyle(color: Colors.black),)
+                            Text(
+                              'Name',
+                              style: TextStyle(color: Colors.black),
+                            )
                           ],
-                        ),
+                         ),
                         Spacer(),
                         Padding(
                           padding: EdgeInsets.only(right: 30.w),

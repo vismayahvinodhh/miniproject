@@ -13,7 +13,7 @@ class BottomNav extends StatefulWidget {
 }
 
 class _BottomNavState extends State<BottomNav> {
-  final List<Widget> pages = [MechReq(), MechService(), MechRating()];
+  final List<Widget> pages = [Mechanic_service_and_request(), MechService(), MechRating()];
   int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class _BottomNavState extends State<BottomNav> {
               });
             },
             currentIndex: selectedIndex,
-            unselectedLabelStyle:TextStyle(color: Colors.black),
+            unselectedLabelStyle: TextStyle(color: Colors.black),
             selectedLabelStyle: TextStyle(color: Colors.black),
             items: [
               BottomNavigationBarItem(

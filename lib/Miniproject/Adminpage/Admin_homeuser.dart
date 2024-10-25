@@ -94,7 +94,7 @@ class User extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 15, right: 15, top: 15),
                 child: InkWell(onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return Admin_user();
+                    return AdminUser(id: doc.id);
                   },));
                 },
                   child: Card(
@@ -183,7 +183,7 @@ class Mechanic extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 15, right: 15, top: 15),
                 child: InkWell(onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return Admin_Mechanic();
+                    return AdminMechanic(id: doc.id,);
                   },));
                 },
                   child: Card(

@@ -24,7 +24,7 @@ class _MechSignUpState extends State<MechSignUp> {
       "Workshop name":Workshop_ctrl.text,
       "Password":Password_ctrl.text,
       "Location":Location_ctrl.text,
-
+      "Status":0,
 
 
 

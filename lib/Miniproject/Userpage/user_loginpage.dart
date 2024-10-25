@@ -21,7 +21,7 @@ class _User_loginState extends State<User_login> {
   void userlogin() async {
     final user = await FirebaseFirestore.instance
         .collection('UserCollection')
-        .where('Username', isEqualTo: Username_ctrl.text)
+        .where('Email', isEqualTo: email_ctrl.text)
         .where('Password', isEqualTo: Password_ctrl.text)
 
         .get();
@@ -30,7 +30,7 @@ class _User_loginState extends State<User_login> {
 
 
       SharedPreferences data = await SharedPreferences.getInstance();
-      data.setString('id', id);
+      data.setString('User_id', id);
 
       Navigator.push(context, MaterialPageRoute(
         builder: (context) {
@@ -41,14 +41,14 @@ class _User_loginState extends State<User_login> {
     else {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           content: Text(
-            "username and password error",
+            "email and password error",
             style: TextStyle(color: Colors.red),
           )));
     }
 
 
   }
-  var Username_ctrl = TextEditingController();
+  var email_ctrl = TextEditingController();
   var Password_ctrl =TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -73,7 +73,7 @@ class _User_loginState extends State<User_login> {
                   ),
                   Center(
                       child: Text(
-                        'LOGIN',
+                        'USER LOGIN',
                         style:
                         TextStyle(fontSize: 30.sp, fontWeight: FontWeight.w900),
                       ))
@@ -90,7 +90,7 @@ class _User_loginState extends State<User_login> {
                         width: 10.w,
                       ),
                       Text(
-                        'Enter Username',
+                        'Enter Email ',
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 18.sp),
                       ),
@@ -102,9 +102,9 @@ class _User_loginState extends State<User_login> {
                   Padding(
                     padding: const EdgeInsets.only(left: 10, right: 10),
                     child: TextFormField(
-                      controller: Username_ctrl,
+                      controller: email_ctrl,
                       decoration: InputDecoration(
-                          hintText: 'Username',
+                          hintText: 'Email',
                           focusColor: Colors.white,
                           border: OutlineInputBorder(
                               borderSide: BorderSide.none,

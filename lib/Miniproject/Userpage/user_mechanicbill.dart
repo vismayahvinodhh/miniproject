@@ -1,15 +1,38 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:miniproject/Miniproject/Userpage/user_paymntsuccsful.dart';
 
 class User_mechanic_bill extends StatefulWidget {
-  const User_mechanic_bill({super.key});
-
+  const User_mechanic_bill(
+      {super.key,
+      required,
+      required this.id,
+      required this.Name,
+      required this.Experience,
+      required this.Amount});
+  final id;
+  final Name;
+  final Experience;
+  final Amount;
   @override
   State<User_mechanic_bill> createState() => _User_mechanic_billState();
 }
 
 class _User_mechanic_billState extends State<User_mechanic_bill> {
+  var Amount_ctrl = TextEditingController();
+  Future<void> Pay() async {
+    FirebaseFirestore.instance
+        .collection("User_request")
+        .doc(widget.id)
+        .update({ 'Payment': 5});
+    Navigator.push(context, MaterialPageRoute(
+      builder: (context) {
+        return Payment_successful();
+      },
+    ));
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +67,7 @@ class _User_mechanic_billState extends State<User_mechanic_bill> {
                   height: 15.h,
                 ),
                 Text(
-                  "Name",
+                  widget.Name,
                   style: TextStyle(
                       color: Colors.black,
                       fontSize: 25.sp,
@@ -54,7 +77,7 @@ class _User_mechanic_billState extends State<User_mechanic_bill> {
                   height: 5.h,
                 ),
                 Text(
-                  "2+ Year Experiance",
+                  widget.Experience,
                   style: TextStyle(
                       color: Colors.black,
                       fontSize: 20.sp,
@@ -110,7 +133,9 @@ class _User_mechanic_billState extends State<User_mechanic_bill> {
                       color: Colors.yellow.shade700,
                       size: 28.sp,
                     ),
-                    SizedBox(width: 10.w,),
+                    SizedBox(
+                      width: 10.w,
+                    ),
                     Icon(
                       Icons.edit,
                       color: Colors.black,
@@ -135,14 +160,18 @@ class _User_mechanic_billState extends State<User_mechanic_bill> {
                     ),
                   ],
                 ),
-                SizedBox(height: 50.h,),
+                SizedBox(
+                  height: 50.h,
+                ),
                 Container(
                   height: 60.h,
                   width: 250.w,
                   child: TextFormField(
+                    readOnly: true,
+                    controller: Amount_ctrl,
                     decoration: InputDecoration(
                         suffixIcon: Icon(Icons.currency_rupee),
-                        hintText: "amount",
+                        hintText: widget.Amount,
                         prefix: Padding(
                           padding: const EdgeInsets.only(top: 10),
                         ),
@@ -156,13 +185,12 @@ class _User_mechanic_billState extends State<User_mechanic_bill> {
                         filled: true),
                   ),
                 ),
-                SizedBox(height: 50.h,),
-                InkWell(
-                  onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) {
-                      return User_mechanic_bill();
-                    },));
-                  },
+                SizedBox(
+                  height: 50.h,
+                ),
+                InkWell(onTap: () {
+                  Pay();
+                },
                   child: Container(
                     height: 60.h,
                     width: 230.w,
@@ -171,17 +199,17 @@ class _User_mechanic_billState extends State<User_mechanic_bill> {
                         borderRadius: BorderRadius.circular(10.r)),
                     child: Center(
                         child: Text(
-                          'Payment',
-                          style: TextStyle(
-                              fontSize: 18.sp,
-                              fontWeight: FontWeight.bold, color: Colors.white),
-                        )),
+                      'Pay',
+                      style: TextStyle(
+                          fontSize: 18.sp,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                    )),
                   ),
                 ),
               ],
             ),
           ),
-        )
-    );
+        ));
   }
 }

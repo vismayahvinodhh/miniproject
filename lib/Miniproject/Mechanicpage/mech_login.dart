@@ -20,14 +20,15 @@ class _MechLoginState extends State<MechLogin> {
   void mechLogin() async {
     final user = await FirebaseFirestore.instance
         .collection('MechCollection')
-        .where('Username', isEqualTo: Username_ctrl.text)
+        .where('Email', isEqualTo: email_ctrl.text)
         .where('Password', isEqualTo: Password_ctrl.text)
+        .where ("Status",isEqualTo: 1)
         .get();
     if (user.docs.isNotEmpty) {
       id = user.docs[0].id;
 
       SharedPreferences data = await SharedPreferences.getInstance();
-      data.setString('id', id);
+      data.setString('Mech_id', id);
 
       Navigator.push(context, MaterialPageRoute(
         builder: (context) {
@@ -37,13 +38,13 @@ class _MechLoginState extends State<MechLogin> {
     } else {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           content: Text(
-        "Username and Password error",
+        "email and Password error",
         style: TextStyle(color: Colors.red),
       )));
     }
   }
 
-  var Username_ctrl = TextEditingController();
+  var email_ctrl = TextEditingController();
   var Password_ctrl = TextEditingController();
 
   @override
@@ -73,7 +74,7 @@ class _MechLoginState extends State<MechLogin> {
               height: 40.h,
             ),
             Text(
-              'LOGIN',
+              'MECHANIC LOGIN',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25.sp),
             ),
             Padding(
@@ -81,7 +82,7 @@ class _MechLoginState extends State<MechLogin> {
               child: Row(
                 children: [
                   Text(
-                    'Enter username',
+                    'Enter Email',
                     style:
                         TextStyle(fontWeight: FontWeight.bold, fontSize: 15.sp),
                   ),
@@ -94,7 +95,7 @@ class _MechLoginState extends State<MechLogin> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10.w),
               child: TextFormField(
-                controller: Username_ctrl,
+                controller: email_ctrl,
                 decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.white),
@@ -102,9 +103,9 @@ class _MechLoginState extends State<MechLogin> {
                     filled: true,
                     fillColor: Colors.white,
                     label: Text(
-                      'Your Username',
+                      'Your Email',
                       style: TextStyle(
-                          color: Colors.black, fontWeight: FontWeight.w300),
+                          color: Colors.grey, fontWeight: FontWeight.w300),
                     )),
               ),
             ),

@@ -22,6 +22,7 @@ class _User_signupState extends State<User_signup> {
       "Email":Email_ctrl.text,
       "Password":Passwrd_ctrl.text,
       "Location":Locatn_ctrl.text,
+      "Status":0,
 
     });
     print("Added Successfully");
